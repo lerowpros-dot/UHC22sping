@@ -3,199 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wiki UHC — 22SpingUniverse</title>
+<title>Wiki — 22SpingUniverse</title>
 <style>
 :root {
-  --bg: #0a0a0a;
-  --fg: #f2f2f2;
-  --jaune: #f6c10c;
-  --jaune-hover: #ffd42a;
-  --dim: #9a9a9a;
-  --ligne: #2b2b2b;
-  --ligne-jaune: rgba(246, 193, 12, 0.35);
-  --carte: #141414;
-  --verte: #1db954;
+  --bg: #070708;
+  --fg: #f3f4f6;
+  --jaune: #f59e0b;
+  --jaune-hover: #fbbf24;
+  --dim: #9ca3af;
+  --ligne: #1f2937;
+  --ligne-jaune: rgba(245, 158, 11, 0.4);
+  --carte: #111827;
+  --verte: #10b981;
 }
 
 * { box-sizing: border-box; }
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
+  margin: 0; background: var(--bg); color: var(--fg);
   font: 16px/1.6 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh; display: flex; flex-direction: column;
 }
 
 a { color: inherit; text-decoration: none; }
 
-/* ---- Entête ---- */
 header.top {
-  border-bottom: 1px solid var(--ligne);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px clamp(20px, 5vw, 56px);
-  position: relative;
+  border-bottom: 1px solid var(--ligne); display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 20px clamp(20px, 5vw, 60px); background: rgba(7, 7, 8, 0.8); backdrop-filter: blur(10px);
+  position: sticky; top: 0; z-index: 100;
 }
-
-.logo {
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: .02em;
-}
+.logo { font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
 .logo span { color: var(--jaune); }
 
-header.top nav {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
+header.top nav { display: flex; gap: 8px; flex-wrap: wrap; }
 header.top nav a {
-  font-size: 14px;
-  font-weight: 600;
-  padding: 9px 16px;
-  border: 1px solid var(--ligne);
-  color: var(--fg);
-  border-radius: 4px;
-  transition: background .15s, border-color .15s, color .15s;
+  font-size: 14px; font-weight: 600; padding: 8px 16px; border: 1px solid transparent;
+  color: var(--dim); border-radius: 8px; transition: all .2s ease;
 }
+header.top nav a:hover { color: var(--fg); background: rgba(255,255,255,0.03); border-color: var(--ligne); }
+header.top nav a.active { background: rgba(245,158,11,0.1); color: var(--jaune); border-color: rgba(245,158,11,0.3); }
 
-header.top nav a:hover {
-  border-color: var(--ligne-jaune);
-  background: rgba(246, 193, 12, .07);
-}
+.menu-toggle { display: none; background: none; border: 1px solid var(--ligne); color: var(--fg); font-size: 20px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
 
-header.top nav a.active {
-  background: var(--jaune);
-  color: #111;
-  border-color: var(--jaune);
-}
+.hero { padding: clamp(50px, 8vw, 100px) clamp(20px, 5vw, 60px) clamp(30px, 5vw, 40px); max-width: 960px; }
+.hero .kicker { color: var(--jaune); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px; }
+.hero h1 { margin: 0 0 16px; font-size: clamp(34px, 6vw, 56px); font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--jaune); }
 
-header.top nav a.active:hover {
-  background: var(--jaune-hover);
-}
-
-/* Menu Hamburger Mobile */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: 1px solid var(--ligne);
-  color: var(--fg);
-  font-size: 20px;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* ---- Contenu Wiki (Hero & Articles) ---- */
-.hero {
-  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 56px) clamp(36px, 5vw, 56px);
-  max-width: 900px;
-}
-
-.hero .kicker {
-  color: var(--jaune);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin: 0 0 12px;
-}
-
-.hero h1 {
-  margin: 0 0 18px;
-  font-size: clamp(34px, 6.5vw, 60px);
-  line-height: 1.08;
-  letter-spacing: -.02em;
-  font-weight: 800;
-}
-
-.hero h1 em {
-  font-style: normal;
-  color: var(--jaune);
-}
-
-.hero p {
-  margin: 0 0 16px;
-  max-width: 65ch;
-  color: var(--dim);
-  font-size: clamp(15px, 1.8vw, 17px);
-}
-
-.hero p b {
-  color: var(--fg);
-  font-weight: 600;
-}
-
-/* ---- Section Contenu Wiki ---- */
-.wiki-content {
-  padding: 0 clamp(20px, 5vw, 56px) clamp(48px, 7vw, 80px);
-  max-width: 900px;
-}
-
-.wiki-content h2 {
-  font-size: 18px;
-  color: var(--jaune);
-  margin-top: 32px;
-  margin-bottom: 12px;
-}
-
-.wiki-content p, .wiki-content li {
-  color: var(--dim);
-  font-size: 15px;
-}
-
-.wiki-content ul {
-  padding-left: 20px;
-}
+.wiki-content { padding: 0 clamp(20px, 5vw, 60px) clamp(60px, 8vw, 100px); max-width: 900px; }
+.wiki-content h2 { font-size: 18px; color: var(--jaune); margin-top: 32px; margin-bottom: 12px; font-weight: 700; }
+.wiki-content p, .wiki-content li { color: var(--dim); font-size: 15px; }
+.wiki-content ul { padding-left: 20px; }
 
 .wiki-box {
-  background: var(--carte);
-  border: 1px solid var(--ligne);
-  border-left: 4px solid var(--jaune);
-  padding: 20px;
-  border-radius: 4px;
-  margin: 20px 0;
+  background: var(--carte); border: 1px solid var(--ligne); border-left: 4px solid var(--jaune);
+  padding: 20px; border-radius: 8px; margin: 20px 0; color: var(--fg);
 }
 
-.wiki-box b {
-  color: var(--fg);
-}
-
-/* ---- Footer ---- */
 footer {
-  margin-top: auto;
-  border-top: 1px solid var(--ligne);
-  padding: 22px clamp(20px, 5vw, 56px);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--dim);
+  margin-top: auto; border-top: 1px solid var(--ligne); padding: 24px clamp(20px, 5vw, 60px);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--dim);
+  background: rgba(7, 7, 8, 0.5);
 }
+footer b { color: var(--jaune); font-weight: 600; }
 
-footer b {
-  color: var(--jaune);
-  font-weight: 600;
-}
-
-/* Mobile responsive */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .menu-toggle { display: block; }
-  header.top nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    margin-top: 12px;
-  }
+  header.top nav { display: none; width: 100%; flex-direction: column; margin-top: 16px; background: var(--carte); padding: 16px; border-radius: 10px; border: 1px solid var(--ligne); }
   header.top nav.open { display: flex; }
-  header.top nav a { text-align: center; }
+  header.top nav a { padding: 10px 14px; }
 }
 </style>
 </head>
@@ -208,7 +84,7 @@ footer b {
     <a href="index.html">Accueil</a>
     <a href="uhc.html">UHC</a>
     <a href="smp.html">SMP</a>
-    <a href="mini-jeux.html">Mini&nbsp;Jeux</a>
+    <a href="mini-jeux.html">Mini Jeux</a>
     <a href="freebuild.html">FreeBuild</a>
   </nav>
 </header>
@@ -217,43 +93,35 @@ footer b {
   <section class="hero">
     <p class="kicker">Base de connaissances</p>
     <h1>Wiki & <em>Règles UHC</em></h1>
-    <p>
-      Retrouvez ici toutes les informations essentielles, le déroulement des parties minute par minute et les spécificités du mode UHC de <b>22SpingUniverse</b>.
-    </p>
+    <p>Retrouve toutes les informations utiles, les subtilités du gameplay et le déroulement des parties sur le serveur.</p>
   </section>
 
   <section class="wiki-content">
     <div class="wiki-box">
-      <b>Information importante :</b> Un heal général est programmé à <b>25:00</b> de jeu pour relancer les dynamiques de combat.
+      <b>Info clé :</b> Un heal général est programmé à <b>25:00</b> de jeu pour relancer l'action si les combats tardent à venir.
     </div>
 
     <h2>Déroulement d'une partie UHC</h2>
-    <p>Le mode UHC de notre serveur suit des règles strictes pour garantir un gameplay compétitif et équilibré :</p>
+    <p>Nos parties sont pensées pour garder un bon rythme tout en restant fidèles à l'esprit UHC :</p>
     <ul>
-      <li><b>Pas de régénération naturelle :</b> Vos points de vie ne remonteront pas tout seul. Utilisez des pommes dorées, des potions ou des têtes de joueurs.</li>
-      <li><b>Le Heal Général :</b> À la 25ème minute (25:00), un soin global est appliqué à tous les joueurs en vie.</li>
-      <li><b>Gestion du PvP :</b> Le PvP est activé selon un timing défini en début de saison (généralement après la période de farm initiale).</li>
-      <li><b>Bordure et BorderEvent :</b> La map se réduit progressivement pour forcer les derniers survivants à s'affronter.</li>
+      <li><b>Pas de régénération naturelle :</b> Tes PV ne remontent pas tout seul, gère tes pommes dorées et tes têtes.</li>
+      <li><b>Heal & PvP :</b> Soin automatique à 10 min et PvP activé à 25 min (sauf indication contraire de l'host).</li>
+      <li><b>Bordure :</b> Elle se resserre progressivement pour forcer les derniers duels.</li>
+      <li><b>Confort de jeu :</b> Tree Capitator et Vein Miner actifs pour farmer plus vite et profiter de l'action.</li>
     </ul>
 
-    <h2>Économie et Récompenses</h2>
-    <p>
-      En participant aux parties UHC et en accomplissant des hauts faits, vous gagnez des <b>UHCoins</b>. Ceux-ci vous permettent d'acheter des éléments cosmétiques exclusifs sur le serveur, sans aucun avantage en jeu (zéro pay-to-win).
-    </p>
+    <h2>Économie et Cosmétiques</h2>
+    <p>En jouant, en faisant des kills ou en remportant des games, tu gagnes des <b>UHCoins</b>. Zéro pay-to-win : ils servent uniquement à flex tes cosmétiques (particules, couleurs de pseudo, auras de lobby, etc.) directement en jeu.</p>
   </section>
 </main>
 
 <footer>
-  <span>&copy; 2026 22SpingUniverse &mdash; Serveur privé</span>
-  <span>Inscriptions via <b>Discord</b> &middot; Aucun achat requis</span>
+  <span>&copy; 2026 22SpingUniverse &mdash; Owner : Lerow</span>
+  <span>Version 1.21+</span>
 </footer>
 
 <script>
-function toggleMenu() {
-  const nav = document.getElementById('nav-menu');
-  nav.classList.toggle('open');
-}
+function toggleMenu() { document.getElementById('nav-menu').classList.toggle('open'); }
 </script>
-
 </body>
 </html>

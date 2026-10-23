@@ -103,7 +103,6 @@ header.top nav a.active {
   position: relative;
 }
 
-/* Effet de lueur en arrière-plan */
 .hero::before {
   content: '';
   position: absolute;
@@ -332,7 +331,6 @@ footer b {
   font-weight: 600;
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .menu-toggle { display: block; }
   header.top nav {
@@ -370,26 +368,24 @@ footer b {
   <section class="hero">
     <div class="badge">
       <span class="dot" aria-hidden="true"></span>
-      Serveur Minecraft Privé &bull; V1.20+
+      Version 1.21+ &bull; Ouvert à tous
     </div>
     <h1>22Sping<em>Universe</em></h1>
     <p>
-      <b>22SpingUniverse</b> est un serveur Minecraft exclusif créé entre passionnés. 
-      Notre philosophie : un gameplay soigné, une communauté soudée et un environnement <b>strictement sans pay-to-win</b>.
+      <b>22SpingUniverse</b>, c'est le serveur chill créé entre potes par <b>Lerow</b>. 
+      Ici, pas de prise de tête : un serveur propre, stable en 1.21+, et surtout <b>zéro pay-to-win</b>. Tout se gagne en jouant.
     </p>
     <p>
-      Plongez dans notre mode phare, l'<b>UHC</b>, avec des parties dynamiques, des saisons compétitives et des mécaniques personnalisées.
+      Notre gros kiffe, c'est l'<b>UHC</b> : des parties rythmées, des saisons entre amis, et des mécaniques maison pour s'éclater sans s'ennuyer.
     </p>
 
     <div class="cta-group">
-      <!-- Bouton IP Minecraft -->
       <button class="ip" id="btn-ip" onclick="copierIP('45.145.165.158:25579')">
         <span class="server-dot" aria-hidden="true"></span>
         <span id="ip-text">45.145.165.158:25579</span>
         <small id="ip-status">Copier l'IP</small>
       </button>
 
-      <!-- Bouton Discord -->
       <a class="btn-discord" href="https://discord.gg/mGUBgtmPyU" target="_blank" rel="noopener">
         <svg viewBox="0 0 127.14 96.36">
           <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.15c2.65-27.28-4.51-51.2-19.5-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5.18-12.72,11.45-12.72S53.9,46,53.88,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.18-12.72,11.45-12.72S96.15,46,96.13,53,91,65.69,84.69,65.69Z"/>
@@ -400,34 +396,34 @@ footer b {
   </section>
 
   <section class="projet">
-    <h2>Explorer l'univers</h2>
+    <h2>Ce qu'on propose</h2>
     <div class="cartes">
       <a class="carte" href="uhc.html">
         <div class="carte-icon">⚔️</div>
         <div>
-          <b>Mode UHC Principal</b>
-          <span>Survie PvP intense, absence de régénération naturelle, saisons régulières et gestion d'équipes.</span>
+          <b>Mode UHC</b>
+          <span>Du PvP survie bien saignant, sans réénération naturelle, parfait pour en découdre.</span>
         </div>
       </a>
       <a class="carte" href="wiki.html">
         <div class="carte-icon">📜</div>
         <div>
           <b>Wiki & Règles</b>
-          <span>Consultez le déroulement complet des parties, le minutage et toutes les subtilités du serveur.</span>
+          <span>Tout ce qu'il faut savoir sur le fonctionnement des parties et les commandes.</span>
         </div>
       </a>
       <a class="carte" href="#">
         <div class="carte-icon">🪙</div>
         <div>
-          <b>Zéro Pay-to-Win</b>
-          <span>Débloquez des cosmétiques exclusifs uniquement en accumulant des UHCoins gagnés à la sueur de votre front.</span>
+          <b>100% Free-to-Play</b>
+          <span>Ici pas de boutique payante. Tes UHCoins gagnés en jeu suffisent pour tes cosmétiques.</span>
         </div>
       </a>
       <a class="carte" href="#">
         <div class="carte-icon">🛠️</div>
         <div>
-          <b>Fait Maison (Custom)</b>
-          <span>Plugins sur-mesure, interfaces élégantes, classements tab et lobby entièrement codés par notre staff.</span>
+          <b>Fait maison</b>
+          <span>Des plugins et des systèmes développés par l'équipe pour une expérience unique.</span>
         </div>
       </a>
     </div>
@@ -435,15 +431,13 @@ footer b {
 </main>
 
 <footer>
-  <span>&copy; 2026 22SpingUniverse &mdash; Tous droits réservés</span>
-  <span>Accès via <b>Discord</b> &bull; Aucun paiement requis</span>
+  <span>&copy; 2026 22SpingUniverse &mdash; Owner : Lerow</span>
+  <span>Rejoins-nous sur <b>Discord</b></span>
 </footer>
 
 <script>
 function copierIP(ip) {
   const statusEl = document.getElementById('ip-status');
-  const ipTextEl = document.getElementById('ip-text');
-  
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(ip).then(() => {
       statusEl.textContent = 'Copié !';
@@ -452,17 +446,12 @@ function copierIP(ip) {
         statusEl.textContent = 'Copier l\'IP';
         statusEl.style.color = '';
       }, 2500);
-    }).catch(() => {
-      statusEl.textContent = 'Erreur';
     });
   }
 }
-
 function toggleMenu() {
-  const nav = document.getElementById('nav-menu');
-  nav.classList.toggle('open');
+  document.getElementById('nav-menu').classList.toggle('open');
 }
 </script>
-
 </body>
 </html>
