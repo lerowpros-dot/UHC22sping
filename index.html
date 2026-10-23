@@ -277,8 +277,8 @@ footer b {
   <a class="logo" href="index.html">22Sping<span>Universe</span></a>
   <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
   <nav id="nav-menu" aria-label="Navigation principale">
-    <a href="index.html">Accueil</a>
-    <a class="active" href="uhc.html">UHC</a>
+    <a class="active" href="index.html">Accueil</a>
+    <a href="uhc.html">UHC</a>
     <a href="smp.html">SMP</a>
     <a href="mini-jeux.html">Mini&nbsp;Jeux</a>
     <a href="freebuild.html">FreeBuild</a>
@@ -304,7 +304,7 @@ footer b {
         <small id="ip-status">&middot; Copier l'IP</small>
       </button>
 
-      <a class="btn-discord" href="https://discord.gg/mGUBgtmPyU" target="_blank" rel="noopener">
+      <a class="btn-discord" href="https://discord.gg/" target="_blank" rel="noopener">
         Rejoindre le Discord
       </a>
     </div>
@@ -356,10 +356,10 @@ function copierIP(ip) {
         statusEl.textContent = '· Copier l\'IP';
       }, 2500);
     }).catch(() => {
-      statusEl.textContent = '· 45.145.165.158:25579';
+      statusEl.textContent = '· 22sping.universe';
     });
   } else {
-    statusEl.textContent = '· 45.145.165.158:25579';
+    statusEl.textContent = '· 22sping.universe';
   }
 }
 
