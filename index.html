@@ -15,6 +15,8 @@
   --ligne-jaune: rgba(246, 193, 12, 0.35);
   --carte: #141414;
   --verte: #1db954;
+  --discord-color: #5865F2;
+  --discord-hover: #4752C4;
 }
 
 * { box-sizing: border-box; }
@@ -171,23 +173,33 @@ header.top nav a.active:hover {
   margin-left: 4px;
 }
 
+/* Bouton Discord Officiel */
 .btn-discord {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 12px 20px;
-  background: transparent;
-  color: var(--fg);
+  background: var(--discord-color);
+  color: #fff;
   font-weight: 600;
   font-size: 15px;
-  border: 1px solid var(--ligne);
+  border: 1px solid var(--discord-color);
   border-radius: 4px;
-  transition: border-color .15s, background .15s;
+  transition: background .15s, transform .1s;
 }
 
 .btn-discord:hover {
-  border-color: var(--ligne-jaune);
-  background: rgba(246, 193, 12, .07);
+  background: var(--discord-hover);
+}
+
+.btn-discord:active {
+  transform: scale(0.98);
+}
+
+.btn-discord svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* ---- Section Projets ---- */
@@ -298,13 +310,18 @@ footer b {
     </p>
 
     <div class="cta-group">
-      <button class="ip" id="btn-ip" onclick="copierIP('22sping.universe')">
+      <!-- Bouton IP Minecraft -->
+      <button class="ip" id="btn-ip" onclick="copierIP('45.145.165.158:25579')">
         <span class="dot" aria-hidden="true"></span>
-        <span id="ip-text">22sping.universe</span>
+        <span id="ip-text">45.145.165.158:25579</span>
         <small id="ip-status">&middot; Copier l'IP</small>
       </button>
 
-      <a class="btn-discord" href="https://discord.gg/" target="_blank" rel="noopener">
+      <!-- Bouton Discord avec logo officiel -->
+      <a class="btn-discord" href="https://discord.gg/mGUBgtmPyU" target="_blank" rel="noopener">
+        <svg viewBox="0 0 127.14 96.36">
+          <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.15c2.65-27.28-4.51-51.2-19.5-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5.18-12.72,11.45-12.72S53.9,46,53.88,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.18-12.72,11.45-12.72S96.15,46,96.13,53,91,65.69,84.69,65.69Z"/>
+        </svg>
         Rejoindre le Discord
       </a>
     </div>
@@ -356,10 +373,10 @@ function copierIP(ip) {
         statusEl.textContent = '· Copier l\'IP';
       }, 2500);
     }).catch(() => {
-      statusEl.textContent = '· 45.145.165.158:25579 ';
+      statusEl.textContent = '· 45.145.165.158:25579';
     });
   } else {
-    statusEl.textContent = '· 45.145.165.158:25579 ';
+    statusEl.textContent = '· 45.145.165.158:25579';
   }
 }
 
