@@ -6,15 +6,16 @@
 <title>22SpingUniverse — Serveur Minecraft Privé</title>
 <style>
 :root {
-  --bg: #0a0a0a;
-  --fg: #f2f2f2;
-  --jaune: #f6c10c;
-  --jaune-hover: #ffd42a;
-  --dim: #9a9a9a;
-  --ligne: #2b2b2b;
-  --ligne-jaune: rgba(246, 193, 12, 0.35);
-  --carte: #141414;
-  --verte: #1db954;
+  --bg: #070708;
+  --fg: #f3f4f6;
+  --jaune: #f59e0b;
+  --jaune-hover: #fbbf24;
+  --dim: #9ca3af;
+  --ligne: #1f2937;
+  --ligne-jaune: rgba(245, 158, 11, 0.4);
+  --carte: #111827;
+  --carte-hover: #1f2937;
+  --verte: #10b981;
   --discord-color: #5865F2;
   --discord-hover: #4752C4;
 }
@@ -40,46 +41,47 @@ header.top {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px clamp(20px, 5vw, 56px);
-  position: relative;
+  padding: 20px clamp(20px, 5vw, 60px);
+  background: rgba(7, 7, 8, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 20px;
-  letter-spacing: .02em;
+  letter-spacing: -.02em;
 }
 .logo span { color: var(--jaune); }
 
 header.top nav {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 header.top nav a {
   font-size: 14px;
   font-weight: 600;
-  padding: 9px 16px;
-  border: 1px solid var(--ligne);
-  color: var(--fg);
-  border-radius: 4px;
-  transition: background .15s, border-color .15s, color .15s;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  color: var(--dim);
+  border-radius: 8px;
+  transition: all .2s ease;
 }
 
 header.top nav a:hover {
-  border-color: var(--ligne-jaune);
-  background: rgba(246, 193, 12, .07);
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--ligne);
 }
 
 header.top nav a.active {
-  background: var(--jaune);
-  color: #111;
-  border-color: var(--jaune);
-}
-
-header.top nav a.active:hover {
-  background: var(--jaune-hover);
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--jaune);
+  border-color: rgba(245, 158, 11, 0.3);
 }
 
 /* Menu Hamburger Mobile */
@@ -90,30 +92,58 @@ header.top nav a.active:hover {
   color: var(--fg);
   font-size: 20px;
   padding: 6px 12px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-/* ---- Présentation (Hero) ---- */
+/* ---- Section Principale (Hero) ---- */
 .hero {
-  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 56px) clamp(36px, 5vw, 56px);
-  max-width: 900px;
+  padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 60px) clamp(40px, 6vw, 60px);
+  max-width: 960px;
+  position: relative;
 }
 
-.hero .kicker {
-  color: var(--jaune);
+/* Effet de lueur en arrière-plan */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(245, 158, 11, 0.08);
+  filter: blur(100px);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin: 0 0 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.badge .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--verte);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--verte);
 }
 
 .hero h1 {
-  margin: 0 0 18px;
-  font-size: clamp(34px, 6.5vw, 60px);
-  line-height: 1.08;
-  letter-spacing: -.02em;
+  margin: 0 0 20px;
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -.03em;
   font-weight: 800;
 }
 
@@ -124,9 +154,9 @@ header.top nav a.active:hover {
 
 .hero p {
   margin: 0 0 16px;
-  max-width: 65ch;
+  max-width: 60ch;
   color: var(--dim);
-  font-size: clamp(15px, 1.8vw, 17px);
+  font-size: clamp(16px, 1.8vw, 18px);
 }
 
 .hero p b {
@@ -134,66 +164,72 @@ header.top nav a.active:hover {
   font-weight: 600;
 }
 
+/* Groupes de boutons CTA */
 .cta-group {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
 .ip {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 12px;
+  padding: 14px 24px;
   background: var(--jaune);
-  color: #111;
+  color: #111827;
   font-weight: 700;
-  font-size: 15px;
-  border: 1px solid var(--jaune);
-  border-radius: 4px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background .15s, transform .1s;
+  transition: all .2s ease;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
 }
 
-.ip:hover { background: var(--jaune-hover); }
-.ip:active { transform: scale(0.98); }
+.ip:hover { 
+  background: var(--jaune-hover); 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(245, 158, 11, 0.35);
+}
+.ip:active { transform: translateY(0); }
 
-.ip .dot {
+.ip .server-dot {
   width: 8px;
   height: 8px;
-  background: var(--verte);
+  background: #111827;
   border-radius: 50%;
-  flex: 0 0 8px;
 }
 
 .ip small {
-  font-weight: 500;
-  opacity: .8;
+  font-weight: 600;
+  opacity: 0.8;
   margin-left: 4px;
+  background: rgba(0,0,0,0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
 }
 
-/* Bouton Discord Officiel */
 .btn-discord {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 20px;
+  padding: 14px 24px;
   background: var(--discord-color);
   color: #fff;
   font-weight: 600;
-  font-size: 15px;
-  border: 1px solid var(--discord-color);
-  border-radius: 4px;
-  transition: background .15s, transform .1s;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  transition: all .2s ease;
+  box-shadow: 0 4px 20px rgba(88, 101, 242, 0.2);
 }
 
 .btn-discord:hover {
   background: var(--discord-hover);
-}
-
-.btn-discord:active {
-  transform: scale(0.98);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(88, 101, 242, 0.35);
 }
 
 .btn-discord svg {
@@ -202,66 +238,93 @@ header.top nav a.active:hover {
   fill: currentColor;
 }
 
-/* ---- Section Projets ---- */
+/* ---- Section Projets & Cartes ---- */
 .projet {
-  padding: 0 clamp(20px, 5vw, 56px) clamp(48px, 7vw, 80px);
-  max-width: 1000px;
+  padding: 20px clamp(20px, 5vw, 60px) clamp(60px, 8vw, 100px);
+  max-width: 1100px;
 }
 
 .projet h2 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--jaune);
   letter-spacing: .1em;
   text-transform: uppercase;
-  margin: 0 0 20px;
+  margin: 0 0 24px;
 }
 
 .cartes {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .carte {
   background: var(--carte);
   border: 1px solid var(--ligne);
-  border-radius: 6px;
-  padding: 22px;
+  border-radius: 12px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color .15s, transform .15s;
+  transition: all .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.carte::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  transition: background .25s ease;
 }
 
 .carte:hover {
   border-color: var(--ligne-jaune);
-  transform: translateY(-2px);
+  background: var(--carte-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.carte:hover::before {
+  background: var(--jaune);
+}
+
+.carte-icon {
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
 .carte b {
   display: block;
-  font-size: 16px;
+  font-size: 17px;
   margin-bottom: 8px;
   color: var(--fg);
+  font-weight: 700;
 }
 
 .carte span {
   font-size: 14px;
   color: var(--dim);
+  line-height: 1.5;
 }
 
 /* ---- Footer ---- */
 footer {
   margin-top: auto;
   border-top: 1px solid var(--ligne);
-  padding: 22px clamp(20px, 5vw, 56px);
+  padding: 24px clamp(20px, 5vw, 60px);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   font-size: 13px;
   color: var(--dim);
+  background: rgba(7, 7, 8, 0.5);
 }
 
 footer b {
@@ -270,16 +333,22 @@ footer b {
 }
 
 /* Mobile responsive */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .menu-toggle { display: block; }
   header.top nav {
     display: none;
     width: 100%;
     flex-direction: column;
-    margin-top: 12px;
+    margin-top: 16px;
+    background: var(--carte);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--ligne);
   }
   header.top nav.open { display: flex; }
-  header.top nav a { text-align: center; }
+  header.top nav a { padding: 10px 14px; }
+  .cta-group { flex-direction: column; }
+  .ip, .btn-discord { width: 100%; justify-content: center; }
 }
 </style>
 </head>
@@ -292,32 +361,35 @@ footer b {
     <a class="active" href="index.html">Accueil</a>
     <a href="uhc.html">UHC</a>
     <a href="smp.html">SMP</a>
-    <a href="mini-jeux.html">Mini&nbsp;Jeux</a>
+    <a href="mini-jeux.html">Mini Jeux</a>
     <a href="freebuild.html">FreeBuild</a>
   </nav>
 </header>
 
 <main>
   <section class="hero">
-    <p class="kicker">Serveur Minecraft privé français</p>
+    <div class="badge">
+      <span class="dot" aria-hidden="true"></span>
+      Serveur Minecraft Privé &bull; V1.20+
+    </div>
     <h1>22Sping<em>Universe</em></h1>
     <p>
-      <b>22SpingUniverse</b> est un serveur Minecraft privé fondé entre amis.
-      Notre engagement : proposer un serveur fluide, équitable et <b>sans pay-to-win</b>.
+      <b>22SpingUniverse</b> est un serveur Minecraft exclusif créé entre passionnés. 
+      Notre philosophie : un gameplay soigné, une communauté soudée et un environnement <b>strictement sans pay-to-win</b>.
     </p>
     <p>
-      Notre mode principal est l'<b>UHC</b> : du PvP survie sans régénération naturelle, des saisons régulières, du jeu en équipe et des UHCoins à accumuler. Les modes SMP, Mini-Jeux et FreeBuild complètent l'expérience au fil des mises à jour.
+      Plongez dans notre mode phare, l'<b>UHC</b>, avec des parties dynamiques, des saisons compétitives et des mécaniques personnalisées.
     </p>
 
     <div class="cta-group">
       <!-- Bouton IP Minecraft -->
       <button class="ip" id="btn-ip" onclick="copierIP('45.145.165.158:25579')">
-        <span class="dot" aria-hidden="true"></span>
+        <span class="server-dot" aria-hidden="true"></span>
         <span id="ip-text">45.145.165.158:25579</span>
-        <small id="ip-status">&middot; Copier l'IP</small>
+        <small id="ip-status">Copier l'IP</small>
       </button>
 
-      <!-- Bouton Discord avec logo officiel -->
+      <!-- Bouton Discord -->
       <a class="btn-discord" href="https://discord.gg/mGUBgtmPyU" target="_blank" rel="noopener">
         <svg viewBox="0 0 127.14 96.36">
           <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.15c2.65-27.28-4.51-51.2-19.5-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5.18-12.72,11.45-12.72S53.9,46,53.88,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.18-12.72,11.45-12.72S96.15,46,96.13,53,91,65.69,84.69,65.69Z"/>
@@ -328,30 +400,34 @@ footer b {
   </section>
 
   <section class="projet">
-    <h2>Découvrir les modes & fonctionnalités</h2>
+    <h2>Explorer l'univers</h2>
     <div class="cartes">
       <a class="carte" href="uhc.html">
+        <div class="carte-icon">⚔️</div>
         <div>
-          <b>UHC — Mode Principal</b>
-          <span>PvP survie exigeant, pas de régénération naturelle, saisons à thèmes et gestion d'équipe.</span>
+          <b>Mode UHC Principal</b>
+          <span>Survie PvP intense, absence de régénération naturelle, saisons régulières et gestion d'équipes.</span>
         </div>
       </a>
       <a class="carte" href="wiki.html">
+        <div class="carte-icon">📜</div>
         <div>
           <b>Wiki & Règles</b>
-          <span>Retrouvez l'intégralité du déroulement d'une partie et les règles minute par minute.</span>
+          <span>Consultez le déroulement complet des parties, le minutage et toutes les subtilités du serveur.</span>
         </div>
       </a>
       <a class="carte" href="#">
+        <div class="carte-icon">🪙</div>
         <div>
-          <b>Économie & Cosmétiques</b>
-          <span>Zéro pay-to-win. Débloquez vos cosmétiques uniquement grâce aux UHCoins gagnés en jouant.</span>
+          <b>Zéro Pay-to-Win</b>
+          <span>Débloquez des cosmétiques exclusifs uniquement en accumulant des UHCoins gagnés à la sueur de votre front.</span>
         </div>
       </a>
       <a class="carte" href="#">
+        <div class="carte-icon">🛠️</div>
         <div>
-          <b>Développement Custom</b>
-          <span>Plugins, systèmes de classement, TAB et lobby conçus sur-mesure par l'équipe du serveur.</span>
+          <b>Fait Maison (Custom)</b>
+          <span>Plugins sur-mesure, interfaces élégantes, classements tab et lobby entièrement codés par notre staff.</span>
         </div>
       </a>
     </div>
@@ -359,24 +435,26 @@ footer b {
 </main>
 
 <footer>
-  <span>&copy; 2026 22SpingUniverse &mdash; Serveur privé</span>
-  <span>Inscriptions via <b>Discord</b> &middot; Aucun achat requis</span>
+  <span>&copy; 2026 22SpingUniverse &mdash; Tous droits réservés</span>
+  <span>Accès via <b>Discord</b> &bull; Aucun paiement requis</span>
 </footer>
 
 <script>
 function copierIP(ip) {
   const statusEl = document.getElementById('ip-status');
+  const ipTextEl = document.getElementById('ip-text');
+  
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(ip).then(() => {
-      statusEl.textContent = '· IP copiée !';
+      statusEl.textContent = 'Copié !';
+      statusEl.style.color = '#34d399';
       setTimeout(() => {
-        statusEl.textContent = '· Copier l\'IP';
+        statusEl.textContent = 'Copier l\'IP';
+        statusEl.style.color = '';
       }, 2500);
     }).catch(() => {
-      statusEl.textContent = '· 45.145.165.158:25579';
+      statusEl.textContent = 'Erreur';
     });
-  } else {
-    statusEl.textContent = '· 45.145.165.158:25579';
   }
 }
 
