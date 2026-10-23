@@ -15,6 +15,7 @@
   --ligne-jaune: rgba(246, 193, 12, 0.35);
   --carte: #141414;
   --verte: #1db954;
+  --rouge: #e74c3c;
 }
 
 * { box-sizing: border-box; }
@@ -94,7 +95,7 @@ header.top nav a.active:hover {
 
 /* ---- Contenu UHC (Hero) ---- */
 .hero {
-  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 56px) clamp(36px, 5vw, 56px);
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 56px) clamp(36px, 5vw, 40px);
   max-width: 900px;
 }
 
@@ -132,53 +133,115 @@ header.top nav a.active:hover {
   font-weight: 600;
 }
 
+/* ---- Switcher de Langues ---- */
+.lang-switcher {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.lang-btn {
+  background: var(--carte);
+  border: 1px solid var(--ligne);
+  color: var(--fg);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+
+.lang-btn:hover {
+  border-color: var(--ligne-jaune);
+  background: rgba(246, 193, 12, .07);
+}
+
+.lang-btn.active {
+  border-color: var(--jaune);
+  color: var(--jaune);
+  background: rgba(246, 193, 12, .1);
+}
+
 /* ---- Section Détails UHC ---- */
-.projet {
+.uhc-details {
   padding: 0 clamp(20px, 5vw, 56px) clamp(48px, 7vw, 80px);
   max-width: 1000px;
 }
 
-.projet h2 {
-  font-size: 13px;
-  font-weight: 700;
+.lang-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lang-section.hidden {
+  display: none;
+}
+
+.alert-box {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  border-left: 4px solid var(--rouge);
+  padding: 16px 20px;
+  border-radius: 4px;
+  color: #f8d7da;
+  font-size: 15px;
+}
+
+.alert-box code {
+  background: rgba(0,0,0,0.4);
   color: var(--jaune);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin: 0 0 20px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 14px;
 }
 
-.cartes {
+.cartes-grid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.carte {
+.card-info {
   background: var(--carte);
   border: 1px solid var(--ligne);
   border-radius: 6px;
-  padding: 22px;
+  padding: 24px;
+}
+
+.card-info h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: var(--jaune);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: border-color .15s, transform .15s;
+  align-items: center;
+  gap: 8px;
 }
 
-.carte:hover {
-  border-color: var(--ligne-jaune);
-  transform: translateY(-2px);
+.card-info ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--dim);
 }
 
-.carte b {
-  display: block;
-  font-size: 16px;
+.card-info li {
   margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.card-info li b {
   color: var(--fg);
 }
 
-.carte span {
-  font-size: 14px;
-  color: var(--dim);
+code {
+  background: rgba(246, 193, 12, 0.15);
+  color: var(--jaune);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
 }
 
 /* ---- Footer ---- */
@@ -230,37 +293,132 @@ footer b {
 <main>
   <section class="hero">
     <p class="kicker">Mode de jeu principal</p>
-    <h1>Le mode <em>UHC</em></h1>
+    <h1>Guide du mode <em>UHC</em></h1>
     <p>
-      L'<b>UHC (Ultra Hardcore)</b> est le cœur battant de 22SpingUniverse. Un mode PvP survie exigeant sans régénération naturelle de vie.
+      L'<b>UHC (Ultra Hardcore)</b> est le cœur battant de 22SpingUniverse. Un mode PvP survie exigeant sans régénération naturelle de vie avec des fonctionnalités faites maison.
     </p>
-    <p>
-      Affrontez vos adversaires ou jouez en équipe lors de nos saisons régulières. Préparez votre stuff, gérez vos ressources et accumulez des <b>UHCoins</b> pour débloquer des cosmétiques exclusifs.
-    </p>
+
+    <!-- Switcher de Langue -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-fr" onclick="switchLang('fr')">🇫🇷 Français</button>
+      <button class="lang-btn" id="btn-en" onclick="switchLang('en')">🏴󠁧󠁢󠁥󠁮󠁧󠁿 English</button>
+    </div>
   </section>
 
-  <section class="projet">
-    <h2>Informations & Règles UHC</h2>
-    <div class="cartes">
-      <a class="carte" href="wiki.html">
-        <div>
-          <b>Consulter le Wiki UHC</b>
-          <span>Toutes les règles détaillées et le déroulement d'une partie minute par minute.</span>
+  <section class="uhc-details">
+    
+    <!-- ================= SECTION FRANÇAIS ================= -->
+    <div id="section-fr" class="lang-section">
+      <div class="alert-box">
+        ⚠️ <b>Rejoindre une partie :</b> Tapez <code>/join</code> pour entrer dans la game ou <code>/leave</code> pour quitter la file.
+      </div>
+
+      <div class="cartes-grid">
+        <div class="card-info">
+          <h3>🚀 Lancer une partie</h3>
+          <p style="color: var(--dim); font-size: 14px; margin-top: 0;">
+            Une game se lance directement depuis le lobby avec l'item <b>« Lancer l'UHC »</b> dans la hotbar, ou via la commande <code>/start</code> pour les hosts.
+          </p>
+          <ul>
+            <li>Monde entièrement pré-généré sans lag.</li>
+            <li>Décompte automatique et téléportation globale.</li>
+            <li>Mode team disponible avec sélecteur d'équipe et menu dédié.</li>
+          </ul>
         </div>
-      </a>
-      <a class="carte" href="#">
-        <div>
-          <b>Gestion des Équipes</b>
-          <span>Informations sur la composition des équipes et les sessions de matchmaking.</span>
+
+        <div class="card-info">
+          <h3>⚔️ Pendant la game</h3>
+          <ul>
+            <li><b>UHC classique :</b> Pas de régénération naturelle.</li>
+            <li><b>Heal automatique :</b> À 10 min (configurable).</li>
+            <li><b>PvP :</b> Activé à 25 min ou manuellement par l'host.</li>
+            <li><b>Bordure :</b> Rétrécissement progressif (taille finale configurable).</li>
+            <li><b>Tree Capitator & Vein Miner :</b> L'arbre et les filons se minent d'un coup.</li>
+            <li><b>Drops & Coffres :</b> % de drop de pommes ajusté, coffres de mort à l'élimination.</li>
+            <li><b>Crafts spéciaux :</b> Limite de 8 toiles d'araignées, Golden Heads (1 tête + 8 or), armures à trims et outils directement enchantés.</li>
+            <li><b>Mode bonus :</b> Drops aléatoires activables.</li>
+          </ul>
         </div>
-      </a>
-      <a class="carte" href="#">
-        <div>
-          <b>Saisons & Classements</b>
-          <span>Découvrez le palmarès des anciennes saisons et le classement général des joueurs.</span>
+
+        <div class="card-info">
+          <h3>🪙 UHCoins & Cosmétiques</h3>
+          <ul>
+            <li>Gagnez des coins à chaque kill, lors d'une victoire et en participant.</li>
+            <li><b>Particules de déplacement :</b> Cœurs, flammes, portail, notes...</li>
+            <li><b>Trims d'armure :</b> Motifs au choix, couleur selon votre grade.</li>
+            <li><b>Tab :</b> Couleur personnalisée du pseudo.</li>
+            <li><b>Effets de Lobby :</b> Halo, aura AFK, particules de saut, son de connexion.</li>
+          </ul>
         </div>
-      </a>
+
+        <div class="card-info">
+          <h3>👤 Profils & Spectateur</h3>
+          <ul>
+            <li>Accédez à votre profil via l'item tête de skin dans la hotbar (UHCoins, kills, victoires).</li>
+            <li>Liez vos réseaux sociaux : <code>/profil set &lt;réseau&gt;</code> (YouTube, Twitch, TikTok, Discord...).</li>
+            <li>Consultez les autres joueurs : <code>/profil &lt;pseudo&gt;</code>.</li>
+            <li>Mode spectateur accessible avec <code>/spectate</code>.</li>
+          </ul>
+        </div>
+      </div>
     </div>
+
+    <!-- ================= SECTION ENGLISH ================= -->
+    <div id="section-en" class="lang-section hidden">
+      <div class="alert-box">
+        ⚠️ <b>Joining a Game:</b> Type <code>/join</code> to join a game or <code>/leave</code> to exit.
+      </div>
+
+      <div class="cartes-grid">
+        <div class="card-info">
+          <h3>🚀 Starting a Game</h3>
+          <p style="color: var(--dim); font-size: 14px; margin-top: 0;">
+            Games can be started directly from the lobby using the <b>"Start UHC"</b> hotbar item, or via <code>/start</code> for hosts.
+          </p>
+          <ul>
+            <li>Pre-generated world for lag-free performance.</li>
+            <li>Automatic countdown and global teleportation.</li>
+            <li>Team mode with a team selector item and a custom GUI.</li>
+          </ul>
+        </div>
+
+        <div class="card-info">
+          <h3>⚔️ During the Game</h3>
+          <ul>
+            <li><b>Classic UHC:</b> No natural health regeneration.</li>
+            <li><b>Automatic Healing:</b> At 10 minutes (configurable).</li>
+            <li><b>PvP:</b> Enabled at 25 minutes or manually triggered.</li>
+            <li><b>World Border:</b> Shrinks continuously to a configurable final size.</li>
+            <li><b>Tree Capitator & Vein Miner:</b> Entire trees and ore veins break at once.</li>
+            <li><b>Drops & Death Chests:</b> Balanced apple rates and death chests on kill.</li>
+            <li><b>Custom Crafts:</b> Max 8 cobwebs, Golden Heads (1 head + 8 gold), pre-trimmed armor & pre-enchanted tools.</li>
+            <li><b>Extra Mode:</b> Toggleable random drops.</li>
+          </ul>
+        </div>
+
+        <div class="card-info">
+          <h3>🪙 UHCoins & Cosmetics</h3>
+          <ul>
+            <li>Earn coins for kills, wins, and participation.</li>
+            <li><b>Trail Particles:</b> Hearts, flames, portal, musical notes...</li>
+            <li><b>Armor Trims:</b> Select your pattern, color tied to rank.</li>
+            <li><b>Tab List:</b> Custom nickname colors.</li>
+            <li><b>Lobby Effects:</b> Halos, AFK aura, jump particles, join sounds.</li>
+          </ul>
+        </div>
+
+        <div class="card-info">
+          <h3>👤 Profiles & Spectator Mode</h3>
+          <ul>
+            <li>Right-click your skin head item to open your profile (UHCoins, total kills, wins).</li>
+            <li>Link socials: <code>/profil set &lt;platform&gt;</code> (YouTube, Twitch, TikTok, Discord...).</li>
+            <li>View other profiles: <code>/profil &lt;username&gt;</code>.</li>
+            <li>Watch games using <code>/spectate</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </section>
 </main>
 
@@ -273,6 +431,25 @@ footer b {
 function toggleMenu() {
   const nav = document.getElementById('nav-menu');
   nav.classList.toggle('open');
+}
+
+function switchLang(lang) {
+  const secFr = document.getElementById('section-fr');
+  const secEn = document.getElementById('section-en');
+  const btnFr = document.getElementById('btn-fr');
+  const btnEn = document.getElementById('btn-en');
+
+  if (lang === 'fr') {
+    secFr.classList.remove('hidden');
+    secEn.classList.add('hidden');
+    btnFr.classList.add('active');
+    btnEn.classList.remove('active');
+  } else {
+    secEn.classList.remove('hidden');
+    secFr.classList.add('hidden');
+    btnEn.classList.add('active');
+    btnFr.classList.remove('active');
+  }
 }
 </script>
 
