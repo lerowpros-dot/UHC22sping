@@ -11,7 +11,9 @@ body{background:radial-gradient(1000px 600px at 70% -10%,#1b2030 0%,var(--bg) 60
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 header{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;height:68px}
+.links{justify-content:center}
+.menu-toggle{display:none;background:var(--panel2);border:1px solid var(--line);color:var(--txt);font-size:20px;padding:6px 12px;border-radius:10px;cursor:pointer}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800}
 .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--yellow),var(--accent));display:grid;place-items:center;color:#1a1400;font-weight:900}
 .links{display:flex;gap:6px;align-items:center}
@@ -42,7 +44,7 @@ h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin-bottom:12px}
 .sub{color:var(--muted);max-width:620px;line-height:1.65}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-@media(max-width:760px){.links{display:none}}
+@media(max-width:760px){.nav{display:flex;flex-wrap:wrap;justify-content:space-between;height:auto;padding-top:12px;padding-bottom:12px}.menu-toggle{display:block}.links{display:none;width:100%;flex-direction:column;align-items:stretch;background:var(--panel);padding:12px;border-radius:14px;border:1px solid var(--line)}.links.open{display:flex}}
 
 /* Centrage (hors header) */
 .card{text-align:center}
@@ -56,13 +58,14 @@ section.wrap{text-align:center}
 <header>
   <div class="wrap nav">
     <a class="brand" href="index.html"><span class="logo">22</span>22SpingUniverse</a>
-    <nav class="links">
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+    <nav class="links" id="nav-menu" aria-label="Navigation principale">
       <a href="index.html" class="active">Accueil</a>
       <a href="uhc.html">UHC</a>
-      <a href="wiki.html">Wiki</a>
-      <a href="register.html">S’inscrire</a>
+      <a href="smp.html">SMP</a>
+      <a href="mini-jeux.html">Mini Jeux</a>
+      <a href="freebuild.html">FreeBuild</a>
     </nav>
-    <a class="btn btn-discord" href="https://discord.gg/TON-INVITATION">Rejoindre le Discord</a>
   </div>
 </header>
 
@@ -103,5 +106,6 @@ section.wrap{text-align:center}
     <a href="https://discord.gg/TON-INVITATION">Rejoins-nous sur Discord</a>
   </div>
 </footer>
+<script>function toggleMenu(){document.getElementById('nav-menu').classList.toggle('open')}</script>
 </body>
 </html>
