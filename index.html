@@ -2,106 +2,182 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>22SpingUniverse — Serveur Minecraft UHC entre amis</title>
 <style>
-:root{--bg:#0b0d12;--panel:#12151d;--panel2:#171b25;--line:#232838;--txt:#e8ebf2;--muted:#9aa3b5;--yellow:#facc15;--accent:#f59e0b;--discord:#5865F2}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:radial-gradient(1000px 600px at 70% -10%,#1b2030 0%,var(--bg) 60%);color:var(--txt);font-family:Inter,system-ui,sans-serif;min-height:100vh}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800}
-.logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--yellow),var(--accent));display:grid;place-items:center;color:#1a1400;font-weight:900}
-.links{display:flex;gap:6px;align-items:center}
-.links a{padding:9px 13px;border-radius:10px;color:var(--muted);font-size:14px;font-weight:600}
-.links a:hover,.links a.active{color:var(--txt);background:var(--panel2)}
-.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:12px 18px;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;transition:.18s}
-.btn-yellow{background:var(--yellow);color:#1a1400}
-.btn-yellow:hover{filter:brightness(1.08)}
-.btn-discord{background:var(--discord);color:#fff}
-.btn-discord:hover{filter:brightness(1.08)}
-.btn-ghost{border-color:var(--line);background:var(--panel2);color:var(--txt)}
-.hero{padding:84px 0 64px;text-align:center}
-.pill{display:inline-flex;gap:8px;align-items:center;background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 12px var(--yellow)}
-h1{font-size:clamp(36px,6vw,62px);line-height:1.05;margin:22px 0 16px;letter-spacing:-.03em}
-h1 span{background:linear-gradient(90deg,var(--yellow),#fde68a);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{max-width:640px;margin:0 auto;color:var(--muted);font-size:17px;line-height:1.65}
-.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-.ip{margin-top:26px;display:inline-flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);padding:12px 14px;border-radius:14px;font-family:ui-monospace,monospace}
-.ip button{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:9px;padding:8px 12px;cursor:pointer;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;padding:30px 0 70px}
-.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:24px}
-.card h3{margin-bottom:8px;font-size:18px}
-.card p{color:var(--muted);line-height:1.6;font-size:15px}
-.icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(250,204,21,.12);color:var(--yellow);font-size:20px;margin-bottom:14px}
-section{padding:64px 0}
-h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin-bottom:12px}
-.sub{color:var(--muted);max-width:620px;line-height:1.65}
-footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-@media(max-width:760px){.links{display:none}}
+:root {
+  --bg: #070708;
+  --fg: #f3f4f6;
+  --jaune: #f59e0b;
+  --jaune-hover: #fbbf24;
+  --dim: #9ca3af;
+  --ligne: #1f2937;
+  --ligne-jaune: rgba(245, 158, 11, 0.4);
+  --carte: #111827;
+  --discord: #5865F2;
+}
 
-/* Centrage (hors header) */
-.card{text-align:center}
-.icon{margin-left:auto;margin-right:auto}
-section.wrap{text-align:center}
-.sub{margin-left:auto;margin-right:auto}
-.foot{justify-content:center;text-align:center}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: inherit; text-decoration: none; }
+
+header.top {
+  border-bottom: 1px solid var(--ligne);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px clamp(20px, 5vw, 60px);
+  background: rgba(7, 7, 8, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo { font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
+.logo span { color: var(--jaune); }
+
+header.top nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+header.top nav a {
+  font-size: 14px; font-weight: 600; padding: 8px 16px;
+  border: 1px solid transparent; color: var(--dim); border-radius: 8px;
+  transition: all .2s ease;
+}
+header.top nav a:hover { color: var(--fg); background: rgba(255,255,255,0.03); border-color: var(--ligne); }
+header.top nav a.active { background: rgba(245,158,11,0.1); color: var(--jaune); border-color: rgba(245,158,11,0.3); }
+header.top nav a.discord { background: var(--discord); color: #fff; }
+header.top nav a.discord:hover { filter: brightness(1.1); }
+
+.menu-toggle {
+  display: none; background: none; border: 1px solid var(--ligne);
+  color: var(--fg); font-size: 20px; padding: 6px 12px; border-radius: 8px; cursor: pointer;
+}
+
+.hero {
+  padding: clamp(50px, 8vw, 100px) clamp(20px, 5vw, 60px) clamp(30px, 5vw, 40px);
+  max-width: 960px; margin: 0 auto; text-align: center;
+}
+.hero .kicker { color: var(--jaune); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px; }
+.hero h1 { margin: 0 0 16px; font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; }
+.hero h1 em { font-style: normal; color: var(--jaune); }
+.hero p.lead { color: var(--dim); max-width: 640px; margin: 0 auto; }
+
+.cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
+  font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--ligne); background: var(--carte); color: var(--dim);
+  transition: all .2s ease; font-family: inherit;
+}
+.btn:hover { border-color: var(--ligne-jaune); color: var(--fg); }
+.btn-jaune { background: var(--jaune); border-color: var(--jaune); color: #1a1100; }
+.btn-jaune:hover { background: var(--jaune-hover); border-color: var(--jaune-hover); color: #1a1100; }
+.btn-discord { background: var(--discord); border-color: var(--discord); color: #fff; }
+.btn-discord:hover { filter: brightness(1.1); color: #fff; border-color: var(--discord); }
+
+.ip {
+  margin-top: 24px; display: inline-flex; align-items: center; gap: 12px;
+  background: var(--carte); border: 1px solid var(--ligne); padding: 10px 12px; border-radius: 8px;
+}
+.ip code { background: none; color: var(--jaune); font-family: monospace; font-size: 15px; padding: 0; }
+
+.content { padding: 0 clamp(20px, 5vw, 60px) clamp(40px, 6vw, 70px); max-width: 1100px; margin: 0 auto; width: 100%; }
+
+.cartes-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.card-info {
+  background: var(--carte); border: 1px solid var(--ligne); border-radius: 12px; padding: 24px;
+  text-align: center; transition: border-color .2s ease;
+}
+.card-info:hover { border-color: var(--ligne-jaune); }
+.card-info h3 { margin: 0 0 12px; font-size: 17px; color: var(--jaune); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.card-info p { margin: 0; color: var(--dim); font-size: 14px; }
+
+.join { text-align: center; padding: clamp(30px, 5vw, 50px) 0 0; }
+.join h2 { margin: 0 0 12px; font-size: clamp(24px, 4vw, 34px); font-weight: 800; letter-spacing: -.02em; }
+.join p { color: var(--dim); max-width: 620px; margin: 0 auto; font-size: 15px; }
+
+footer {
+  margin-top: auto; border-top: 1px solid var(--ligne); padding: 24px clamp(20px, 5vw, 60px);
+  display: flex; justify-content: center; text-align: center; flex-wrap: wrap; gap: 12px 24px; font-size: 13px; color: var(--dim);
+  background: rgba(7, 7, 8, 0.5);
+}
+footer a:hover { color: var(--jaune); }
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  header.top { flex-wrap: wrap; }
+  header.top nav { display: none; width: 100%; flex-direction: column; align-items: stretch; margin-top: 16px; background: var(--carte); padding: 16px; border-radius: 10px; border: 1px solid var(--ligne); }
+  header.top nav.open { display: flex; }
+  header.top nav a { padding: 10px 14px; }
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="index.html"><span class="logo">22</span>22SpingUniverse</a>
-    <nav class="links">
-      <a href="index.html" class="active">Accueil</a>
-      <a href="uhc.html">UHC</a>
-      <a href="wiki.html">Wiki</a>
-      <a href="register.html">S’inscrire</a>
-    </nav>
-    <a class="btn btn-discord" href="https://discord.gg/TON-INVITATION">Rejoindre le Discord</a>
-  </div>
+
+<header class="top">
+  <a class="logo" href="index.html">22Sping<span>Universe</span></a>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <nav id="nav-menu" aria-label="Navigation principale">
+    <a class="active" href="index.html">Accueil</a>
+    <a href="uhc.html">UHC</a>
+    <a href="wiki.html">Wiki</a>
+    <a href="register.html">S’inscrire</a>
+    <a class="discord" href="https://discord.gg/TON-INVITATION">Rejoindre le Discord</a>
+  </nav>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div class="pill"><span class="dot"></span> Serveur ouvert · Minecraft 1.21</div>
-    <h1>Des parties UHC,<br>entre potes, <span>sans prise de tête</span>.</h1>
+  <section class="hero">
+    <p class="kicker">Serveur ouvert · Minecraft 1.21</p>
+    <h1>Des parties UHC, entre potes, <em>sans prise de tête</em>.</h1>
     <p class="lead">22SpingUniverse, c’est un serveur Minecraft fait pour jouer tranquillement avec des gens sympas. Pas de boutique, pas de pay-to-win : tu progresses en jouant, point.</p>
     <div class="cta">
-      <a class="btn btn-yellow" href="register.html">Créer mon compte</a>
-      <a class="btn btn-ghost" href="uhc.html">Découvrir l’UHC</a>
+      <a class="btn btn-jaune" href="register.html">Créer mon compte</a>
+      <a class="btn" href="uhc.html">Découvrir l’UHC</a>
     </div>
     <div class="ip">
-      <span id="ip">45.145.165.158:25579</span>
-      <button onclick="navigator.clipboard.writeText(document.getElementById('ip').textContent)">Copier l’IP</button>
+      <code id="ip">45.145.165.158:25579</code>
+      <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('ip').textContent)">Copier l’IP</button>
     </div>
-  </div>
+  </section>
 
-  <div class="wrap grid">
-    <div class="card"><div class="icon">⚔️</div><h3>UHC maison</h3><p>Des parties rapides, nerveuses et bien réglées : pas de régénération naturelle, une bordure qui se resserre et des mécaniques pensées pour éviter les parties qui traînent.</p></div>
-    <div class="card"><div class="icon">🎁</div><h3>Tout se gagne en jeu</h3><p>Tes kills, tes victoires et ta participation te rapportent des UHCoins. Ils servent à personnaliser ton profil, pas à acheter un avantage.</p></div>
-    <div class="card"><div class="icon">🛠️</div><h3>Fait avec amour</h3><p>Plugins, commandes et systèmes développés par l’équipe. On améliore le serveur au fil des saisons, avec vos retours.</p></div>
-    <div class="card"><div class="icon">👥</div><h3>Une vraie communauté</h3><p>Le Discord, c’est là où on organise les parties, on annonce les nouveautés et on discute. Viens juste dire bonjour, c’est déjà cool.</p></div>
-  </div>
+  <section class="content">
+    <div class="cartes-grid">
+      <div class="card-info"><h3>⚔️ UHC maison</h3><p>Des parties rapides, nerveuses et bien réglées : pas de régénération naturelle, une bordure qui se resserre et des mécaniques pensées pour éviter les parties qui traînent.</p></div>
+      <div class="card-info"><h3>🎁 Tout se gagne en jeu</h3><p>Tes kills, tes victoires et ta participation te rapportent des UHCoins. Ils servent à personnaliser ton profil, pas à acheter un avantage.</p></div>
+      <div class="card-info"><h3>🛠️ Fait avec amour</h3><p>Plugins, commandes et systèmes développés par l’équipe. On améliore le serveur au fil des saisons, avec vos retours.</p></div>
+      <div class="card-info"><h3>👥 Une vraie communauté</h3><p>Le Discord, c’est là où on organise les parties, on annonce les nouveautés et on discute. Viens juste dire bonjour, c’est déjà cool.</p></div>
+    </div>
 
-  <section class="wrap">
-    <h2>Rejoindre le serveur</h2>
-    <p class="sub">Crée ton compte avec Discord en quelques secondes, puis connecte-toi en jeu avec l’adresse ci-dessus. Ton compte sert à sauvegarder tes stats, tes UHCoins et tes cosmétiques.</p>
-    <div class="cta">
-      <a class="btn btn-discord" href="register.html">S’inscrire avec Discord</a>
+    <div class="join">
+      <h2>Rejoindre le serveur</h2>
+      <p>Crée ton compte avec Discord en quelques secondes, puis connecte-toi en jeu avec l’adresse ci-dessus. Ton compte sert à sauvegarder tes stats, tes UHCoins et tes cosmétiques.</p>
+      <div class="cta">
+        <a class="btn btn-discord" href="register.html">S’inscrire avec Discord</a>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap foot">
-    <span>© 2026 22SpingUniverse · Owner : Lerow · Version 1.21</span>
-    <a href="https://discord.gg/TON-INVITATION">Rejoins-nous sur Discord</a>
-  </div>
+  <span>&copy; 2026 22SpingUniverse &mdash; Owner : Lerow</span>
+  <span>Version 1.21</span>
+  <a href="https://discord.gg/TON-INVITATION">Rejoins-nous sur Discord</a>
 </footer>
+
+<script>
+function toggleMenu() { document.getElementById('nav-menu').classList.toggle('open'); }
+</script>
 </body>
 </html>
