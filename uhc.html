@@ -93,7 +93,7 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
     <!-- FRANCAIS -->
     <div id="section-fr" class="lang-section">
       <div class="alert-box">
-        ⚠️ <b>Rejoindre une partie :</b> Fais <code>/join</code> pour entrer dans la file ou <code>/leave</code> pour quitter.
+        ⚠️ <b>Rejoindre une partie :</b> Fais <code>/join</code> pour entrer dans la file, <code>/leave</code> (ou <code>/quitter</code>) pour en sortir. <code>/menu</code> ouvre le menu principal.
       </div>
 
       <div class="cartes-grid">
@@ -117,6 +117,8 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
             <li><b>Tree Capitator & Vein Miner :</b> Tout l'arbre tombe et les filons se minent d'un coup.</li>
             <li><b>Loots :</b> Plus de pommes, coffres de mort à l'élimination.</li>
             <li><b>Crafts :</b> Toiles limitées à 8, Golden Heads (tête + 8 or), armures trim et outils direct enchantés !</li>
+            <li><b>Équipes :</b> 8 couleurs, friendly fire bloqué, glow visible seulement par tes coéquipiers.</li>
+            <li><b>Boussole :</b> le scoreboard indique la direction du joueur le plus proche.</li>
           </ul>
         </div>
 
@@ -124,9 +126,10 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
           <div class="icon">🪙</div><h3>UHCoins & Cosmétiques</h3>
           <ul>
             <li>Chaque kill, chaque win et même ta participation te rapportent des coins.</li>
-            <li><b>Particules :</b> Cœurs, flammes, portails, notes...</li>
+            <li><b>Particules :</b> Cœurs, flammes, portails, notes... en marchant.</li>
             <li><b>Trims :</b> Motifs stylés avec couleur selon ton grade.</li>
-            <li><b>Tab & Lobby :</b> Pseudo coloré, halos, auras AFK et sons de connexion.</li>
+            <li><b>Tab & Lobby :</b> Pseudo coloré, halos, flammes de diable, aura d'âme AFK, effet de saut et sons de connexion.</li>
+            <li><b>Ramassage auto :</b> activable ou non. Tout est dans le menu du diamant.</li>
           </ul>
         </div>
 
@@ -135,8 +138,17 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
           <ul>
             <li>Clic droit sur ta tête dans la hotbar pour voir tes stats (kills, victoires, UHCoins).</li>
             <li>Lier tes réseaux : <code>/profil set &lt;réseau&gt;</code> (YouTube, Twitch, TikTok, etc.).</li>
-            <li>Voir le profil des autres : <code>/profil &lt;pseudo&gt;</code>.</li>
-            <li>Observer en live : <code>/spectate</code>.</li>
+            <li>Voir le profil des autres : <code>/profil &lt;pseudo&gt;</code>. Retirer un réseau : <code>/profil remove &lt;réseau&gt;</code>.</li>
+            <li>Tes liens sont cliquables dans le chat. Les classements (coins, kills, victoires) se consultent en jeu.</li>
+            <li>Observer en live, ou après ta mort : <code>/spectate</code>.</li>
+          </ul>
+        </div>
+
+        <div class="card-info">
+          <div class="icon">🏁</div><h3>Le lobby</h3>
+          <ul>
+            <li><b>Mini-parcours chronométré :</b> plaques de pression en or pour démarrer et finir, temps en mm:ss.mmm, record perso sauvegardé.</li>
+            <li>Lobby protégé : pas de dégâts de chute, pas de mobs, pas de météo, pas de collisions.</li>
           </ul>
         </div>
       </div>
@@ -145,7 +157,7 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
     <!-- ENGLISH -->
     <div id="section-en" class="lang-section hidden">
       <div class="alert-box">
-        ⚠️ <b>Joining a Game:</b> Type <code>/join</code> to enter or <code>/leave</code> to quit.
+        ⚠️ <b>Joining a Game:</b> Type <code>/join</code> to enter, <code>/leave</code> (or <code>/quitter</code>) to quit. <code>/menu</code> opens the main menu.
       </div>
 
       <div class="cartes-grid">
@@ -169,6 +181,8 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
             <li><b>Tree Capitator & Vein Miner:</b> Full trees & ore veins break instantly.</li>
             <li><b>Drops:</b> Better apple rates, death chests on kill.</li>
             <li><b>Custom Crafts:</b> Max 8 cobwebs, Golden Heads (head + 8 gold), pre-trimmed armor & pre-enchanted tools.</li>
+            <li><b>Teams:</b> 8 colors, friendly fire blocked, glow visible only to teammates.</li>
+            <li><b>Compass:</b> the scoreboard shows the direction of the nearest player.</li>
           </ul>
         </div>
 
@@ -176,9 +190,10 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
           <div class="icon">🪙</div><h3>UHCoins & Cosmetics</h3>
           <ul>
             <li>Earn coins from kills, wins, and participation.</li>
-            <li><b>Particles:</b> Hearts, flames, portals, notes...</li>
+            <li><b>Particles:</b> Hearts, flames, portals, notes... while walking.</li>
             <li><b>Trims:</b> Custom patterns with rank-based colors.</li>
-            <li><b>Lobby & Tab:</b> Colored name, halos, AFK auras, join sounds.</li>
+            <li><b>Lobby & Tab:</b> Colored name, halos, soul flames, AFK soul aura, jump effect, join sounds.</li>
+            <li><b>Auto-pickup:</b> on or off. Everything is in the diamond menu.</li>
           </ul>
         </div>
 
@@ -187,8 +202,17 @@ footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted);fon
           <ul>
             <li>Right-click your skin head item to check stats (UHCoins, kills, wins).</li>
             <li>Link socials: <code>/profil set &lt;platform&gt;</code>.</li>
-            <li>View others: <code>/profil &lt;username&gt;</code>.</li>
-            <li>Watch games using <code>/spectate</code>.</li>
+            <li>View others: <code>/profil &lt;username&gt;</code>. Remove a link: <code>/profil remove &lt;platform&gt;</code>.</li>
+            <li>Your links are clickable in chat. Leaderboards (coins, kills, wins) are viewable in game.</li>
+            <li>Watch games, or keep watching after you die: <code>/spectate</code>.</li>
+          </ul>
+        </div>
+
+        <div class="card-info">
+          <div class="icon">🏁</div><h3>The Lobby</h3>
+          <ul>
+            <li><b>Timed mini-course:</b> gold pressure plates to start and finish, time in mm:ss.mmm, personal best saved.</li>
+            <li>Protected lobby: no fall damage, no mobs, no weather, no collisions.</li>
           </ul>
         </div>
       </div>
