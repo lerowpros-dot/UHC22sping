@@ -22,7 +22,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.82);backdrop-f
 .btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:12px 18px;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;transition:.18s}
 .btn-yellow{background:var(--yellow);color:#1a1400}
 .btn-yellow:hover{filter:brightness(1.08)}
-.btn-discord{background:var(--discord);color:#fff}
+.btn-discord{background:var(--discord);color:#fff;justify-self:end}
 .btn-discord:hover{filter:brightness(1.08)}
 .btn-ghost{border-color:var(--line);background:var(--panel2);color:var(--txt)}
 .hero{padding:84px 0 64px;text-align:center}
@@ -44,7 +44,7 @@ h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin-bottom:12px}
 .sub{color:var(--muted);max-width:620px;line-height:1.65}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-@media(max-width:760px){.nav{display:flex;flex-wrap:wrap;justify-content:space-between;height:auto;padding-top:12px;padding-bottom:12px}.menu-toggle{display:block}.links{display:none;width:100%;flex-direction:column;align-items:stretch;background:var(--panel);padding:12px;border-radius:14px;border:1px solid var(--line)}.links.open{display:flex}}
+@media(max-width:760px){.nav{display:flex;flex-wrap:wrap;justify-content:space-between;height:auto;padding-top:12px;padding-bottom:12px}.menu-toggle{display:block}.links{display:none;width:100%;flex-direction:column;align-items:stretch;background:var(--panel);padding:12px;border-radius:14px;border:1px solid var(--line)}.links.open{display:flex;order:4}.menu-toggle{order:3}.btn-discord{order:2;margin-left:auto}}
 
 /* Centrage (hors header) */
 .card{text-align:center}
@@ -66,6 +66,7 @@ section.wrap{text-align:center}
       <a href="mini-jeux.html">Mini Jeux</a>
       <a href="freebuild.html">FreeBuild</a>
     </nav>
+    <a class="btn btn-discord" href="https://discord.gg/TON-INVITATION">Rejoindre le Discord</a>
   </div>
 </header>
 
