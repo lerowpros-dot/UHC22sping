@@ -1,0 +1,67 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&family=Pixelify+Sans:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<title>Guide UHC – 22SpingUniverse</title></head><body>
+<header><div class="wrap">
+<a class="brand" href="index.html">22SpingUniverse</a>
+<nav aria-label="Navigation principale">
+<a href="index.html">Accueil</a>
+<a href="uhc.html" aria-current="page">UHC</a>
+<a href="smp.html">SMP</a>
+<a href="mini-jeux.html">Mini-jeux</a>
+<a href="freebuild.html">FreeBuild</a>
+</nav>
+<a class="btn" href="https://discord.gg/mGUBgtmPyU">Discord</a>
+</div></header>
+<main><div class="wrap">
+<h1 class="page-title">Guide du UHC</h1>
+<div class="row" role="group" aria-label="Langue" style="margin-bottom:34px">
+<button class="btn on" id="b-fr" type="button">Français</button>
+<button class="btn" id="b-en" type="button">English</button>
+</div>
+<div id="fr">
+<div class="box" style="margin-bottom:44px">Pour jouer : <code>/join</code> pour entrer dans la file, <code>/leave</code> pour en sortir.</div>
+<div class="cols">
+<section><h2>Lancer une partie</h2><p>Depuis le lobby avec l’item de la hotbar, ou avec <code>/start</code> pour les hosts.</p>
+<ul class="plain"><li>Monde pré-généré, sans saccades.</li><li>Décompte et téléportation automatiques.</li><li>Sélecteur d’équipe dans la hotbar pour former les squads.</li></ul></section>
+<section><h2>Pendant la partie</h2><ul class="plain">
+<li><b>UHC classique :</b> pas de rédemption, pas de régénération naturelle.</li>
+<li><b>Heal automatique :</b> à 10 min (configurable).</li>
+<li><b>PvP :</b> ouvert à 25 min, ou lancé à la main.</li>
+<li><b>Bordure :</b> elle rétrécit jusqu’à une taille finale serrée.</li>
+<li><b>Tree Capitator et Vein Miner :</b> l’arbre tombe d’un coup, les filons se minent d’un coup.</li>
+<li><b>Loots :</b> plus de pommes, coffre de mort à chaque élimination.</li>
+<li><b>Crafts :</b> toiles limitées à 8, Golden Head (tête + 8 or), armures avec trim et outils déjà enchantés.</li></ul></section>
+<section><h2>UHCoins et cosmétiques</h2><p>Chaque kill, chaque victoire et ta simple participation te rapportent des coins.</p>
+<ul class="plain"><li><b>Particules :</b> cœurs, flammes, portails, notes…</li><li><b>Trims :</b> motifs dont la couleur dépend de ton grade.</li><li><b>Tab et lobby :</b> pseudo coloré, halos, auras AFK, sons de connexion.</li></ul></section>
+<section><h2>Profils et spectateur</h2><ul class="plain">
+<li>Clic droit sur ta tête dans la hotbar pour voir tes kills, victoires et UHCoins.</li>
+<li><code>/profil set &lt;réseau&gt;</code> lie YouTube, Twitch, TikTok, etc.</li>
+<li><code>/profil &lt;pseudo&gt;</code> affiche le profil d’un autre joueur.</li>
+<li><code>/spectate</code> pour regarder une partie en direct.</li></ul></section>
+</div></div>
+<div id="en" class="hidden">
+<div class="box" style="margin-bottom:44px">To play: <code>/join</code> to enter the queue, <code>/leave</code> to quit it.</div>
+<div class="cols">
+<section><h2>Starting a game</h2><p>From the lobby with the hotbar item, or with <code>/start</code> for hosts.</p>
+<ul class="plain"><li>Pre-generated, lag-free world.</li><li>Automatic countdown and teleport.</li><li>Team selector item in the hotbar.</li></ul></section>
+<section><h2>During the game</h2><ul class="plain">
+<li><b>Classic UHC:</b> no natural regeneration.</li>
+<li><b>Auto-heal:</b> at 10 min (configurable).</li>
+<li><b>PvP:</b> enabled at 25 min, or triggered manually.</li>
+<li><b>Border:</b> shrinks down to a small final size.</li>
+<li><b>Tree Capitator and Vein Miner:</b> whole trees and ore veins break at once.</li>
+<li><b>Drops:</b> better apple rates, a death chest on every kill.</li>
+<li><b>Custom crafts:</b> max 8 cobwebs, Golden Head (head + 8 gold), pre-trimmed armor and pre-enchanted tools.</li></ul></section>
+<section><h2>UHCoins and cosmetics</h2><p>Kills, wins and just taking part earn you coins.</p>
+<ul class="plain"><li><b>Particles:</b> hearts, flames, portals, notes…</li><li><b>Trims:</b> patterns colored by your rank.</li><li><b>Lobby and tab:</b> colored name, halos, AFK auras, join sounds.</li></ul></section>
+<section><h2>Profiles and spectating</h2><ul class="plain">
+<li>Right-click your head in the hotbar to see your kills, wins and UHCoins.</li>
+<li><code>/profil set &lt;platform&gt;</code> links your socials.</li>
+<li><code>/profil &lt;username&gt;</code> shows another player’s profile.</li>
+<li><code>/spectate</code> to watch a game live.</li></ul></section>
+</div></div>
+</div></main><footer><div class="wrap"><span>© 2026 22SpingUniverse, par Lerow</span><span>Minecraft 1.21+</span></div></footer><script>function L(l){var f=l=="fr";document.getElementById("fr").classList.toggle("hidden",!f);document.getElementById("en").classList.toggle("hidden",f);document.getElementById("b-fr").classList.toggle("on",f);document.getElementById("b-en").classList.toggle("on",!f);document.documentElement.lang=l}document.getElementById("b-fr").onclick=function(){L("fr")};document.getElementById("b-en").onclick=function(){L("en")}</script></body></html>
